@@ -25,7 +25,12 @@ SECRET_KEY = 'django-insecure-+%1-806ntm7)-u*(r_ox#kbiy257_@d_o$*39h_+-4e&=_$+b)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'filmsnframes.onrender.com',
+    'localhost',
+    '127.0.0.1',
+]
+
 
 
 # Application definition
@@ -59,7 +64,7 @@ import os
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [BASE_DIR / 'templates'],  # ✅ IMPORTANT
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -71,6 +76,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 
 
