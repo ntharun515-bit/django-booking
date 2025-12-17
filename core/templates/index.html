@@ -1,0 +1,198 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Films N Frames | Wedding & Event Photography</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-box">
+    <h1>Films N Frames</h1>
+    <p>Wedding & Event Photography</p>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <h1>Films N Frames</h1>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#packages">Packages</a>
+    <a href="#customise">Customise</a>
+    <a href="#booking">Book Now</a>
+    <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="overlay">
+    <h2>Wedding & Event Photography</h2>
+    <p>Capturing timeless moments with cinematic perfection</p>
+    <a href="#packages" class="btn">View Packages</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section">
+  <h2>Event & Wedding Photography Booking</h2>
+  <p>
+    We provide professional wedding and event photography services with complete
+    coverage, cinematic visuals, and high-quality albums to preserve your memories forever.
+  </p>
+</section>
+
+<!-- PACKAGES -->
+<section class="section dark" id="packages">
+  <h2>Our Packages</h2>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Basic</h3>
+      <p>Perfect for elegant weddings</p>
+      <p class="price">₹1,20,000</p>
+      <button class="btn" onclick="selectPackage('Basic','As per Basic Package')">
+        Select Package
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>Premium</h3>
+      <p>Best balance of coverage & creativity</p>
+      <p class="price">₹1,60,000</p>
+      <button class="btn" onclick="selectPackage('Premium','As per Premium Package')">
+        Select Package
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>Luxury</h3>
+      <p>Complete premium wedding experience</p>
+      <p class="price">₹2,20,000</p>
+      <button class="btn" onclick="selectPackage('Luxury','As per Luxury Package')">
+        Select Package
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- CUSTOMISE -->
+<section class="section" id="customise">
+  <h2>Customise Your Package</h2>
+
+  <form id="customForm">
+    <div class="grid">
+      <label><input type="checkbox" value="Traditional Photography"> Traditional Photography</label>
+      <label><input type="checkbox" value="Traditional Videography"> Traditional Videography</label>
+      <label><input type="checkbox" value="Candid Photography"> Candid Photography</label>
+      <label><input type="checkbox" value="Candid Videography"> Candid Videography</label>
+      <label><input type="checkbox" value="Drone"> Drone</label>
+      <label><input type="checkbox" value="LED Wall 6x8"> LED Wall 6×8</label>
+      <label><input type="checkbox" value="LED Wall 6x10"> LED Wall 6×10</label>
+      <label><input type="checkbox" value="TV"> TV</label>
+      <label><input type="checkbox" value="Album 20 Sheets"> Album 20 Sheets</label>
+      <label><input type="checkbox" value="Album 40 Sheets"> Album 40 Sheets</label>
+      <label><input type="checkbox" value="Album 60 Sheets"> Album 60 Sheets</label>
+      <label><input type="checkbox" value="House Shastra"> House Shastra</label>
+      <label><input type="checkbox" value="Haldi & Mehendi"> Haldi & Mehendi</label>
+      <label><input type="checkbox" value="Pre-Wedding Photography"> Pre-Wedding Photography</label>
+      <label><input type="checkbox" value="Pre-Wedding Cinematic Video"> Pre-Wedding Cinematic Video</label>
+      <label><input type="checkbox" value="Pre-Wedding Drone"> Pre-Wedding Drone</label>
+    </div>
+
+    <button type="button" class="btn" onclick="useCustom()">Use Selected Services</button>
+  </form>
+</section>
+
+<!-- BOOKING -->
+<section class="section booking" id="booking">
+  <h2>Book Your Event</h2>
+
+  <form id="bookingForm">
+    <input id="name" placeholder="Name" required>
+    <input id="phone" placeholder="Phone Number" required>
+    <input id="location" placeholder="Location" required>
+    <input type="date" id="date" required>
+
+    <input id="package" placeholder="Selected Package" readonly>
+    <textarea id="services" placeholder="Selected Services" readonly></textarea>
+
+    <select id="payment" required>
+      <option value="">Select Payment Option</option>
+      <option>Advance Paid</option>
+      <option>Full Amount on Event Day</option>
+    </select>
+
+    <button class="btn">Send Booking via WhatsApp</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © <span id="year"></span> Films N Frames | Wedding & Event Photography
+</footer>
+
+<script>
+/* Loader */
+window.onload = () => {
+  setTimeout(() => {
+    loader.style.display = "none";
+  }, 1800);
+};
+
+/* Package select */
+function selectPackage(pkg, services){
+  localStorage.setItem("pkg", pkg);
+  localStorage.setItem("services", services);
+  package.value = pkg;
+  servicesBox.value = services;
+  location.href = "#booking";
+}
+
+/* Customise */
+function useCustom(){
+  let s = [];
+  document.querySelectorAll("#customForm input:checked")
+    .forEach(i => s.push(i.value));
+  localStorage.setItem("pkg","Custom");
+  localStorage.setItem("services", s.join(", "));
+  package.value = "Custom";
+  servicesBox.value = s.join(", ");
+  location.href="#booking";
+}
+
+/* Autofill */
+const package = document.getElementById("package");
+const servicesBox = document.getElementById("services");
+package.value = localStorage.getItem("pkg") || "";
+servicesBox.value = localStorage.getItem("services") || "";
+
+/* WhatsApp */
+bookingForm.onsubmit = e => {
+  e.preventDefault();
+  const msg = `📸 New Booking – Films N Frames
+Name: ${name.value}
+Phone: ${phone.value}
+Location: ${location.value}
+Date: ${date.value}
+Package: ${package.value}
+Services: ${servicesBox.value}
+Payment: ${payment.value}`;
+  window.open("https://wa.me/917483768401?text=" + encodeURIComponent(msg));
+};
+
+/* Year */
+year.innerText = new Date().getFullYear();
+</script>
+
+</body>
+</html>
