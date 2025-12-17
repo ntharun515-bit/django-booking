@@ -4,7 +4,8 @@ from django.shortcuts import render
 import json
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import Booking
+from core.bookings.models import Booking
+
 
 @csrf_exempt
 def create_booking(request):

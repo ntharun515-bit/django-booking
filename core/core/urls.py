@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
-from bookings.views import home
+from core.bookings.views import home
+
 
 urlpatterns = [
     path('', home),  # 👈 HOME PAGE

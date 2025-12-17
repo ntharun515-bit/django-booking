@@ -37,11 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-     'core.bookings', 
 
-    'bookings.apps.BookingsConfig',  # ✅ USE THIS FORM
+    'core.bookings.apps.BookingsConfig',   # ✅ IMPORTANT
 ]
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
