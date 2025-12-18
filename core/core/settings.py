@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'core.bookings.apps.BookingsConfig',  # ✅ ONLY THIS
+    
     'bookings',
 ]
 
@@ -57,7 +57,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'core.core.urls'
+ROOT_URLCONF = 'core.urls'
+
 
 
 import os
