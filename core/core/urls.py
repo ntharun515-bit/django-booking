@@ -1,10 +1,9 @@
 from django.contrib import admin
 from django.urls import path, include
-from core.bookings.views import home
-
+from bookings.views import home
 
 urlpatterns = [
-    path('', home),  # 👈 HOME PAGE
     path('admin/', admin.site.urls),
+    path('', home, name='home'),
     path('api/bookings/', include('bookings.urls')),
 ]
