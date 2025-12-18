@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,8 +8,8 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
 </head>
+
 <body>
 
 <!-- LOADER -->
@@ -35,78 +34,128 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <div class="overlay">
+  <div class="overlay animate">
     <h2>Wedding & Event Photography</h2>
-    <p>Capturing timeless moments with cinematic perfection</p>
+    <p>We Frame Your Movements Through Our Lens</p>
     <a href="#packages" class="btn">View Packages</a>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section class="section">
-  <h2>Event & Wedding Photography Booking</h2>
-  <p>
-    We provide professional wedding and event photography services with complete
-    coverage, cinematic visuals, and high-quality albums to preserve your memories forever.
-  </p>
-</section>
-
 <!-- PACKAGES -->
 <section class="section dark" id="packages">
-  <h2>Our Packages</h2>
+  <h2 class="animate">Our Packages</h2>
 
   <div class="cards">
-    <div class="card">
-      <h3>Basic</h3>
-      <p>Perfect for elegant weddings</p>
-      <p class="price">₹1,20,000</p>
-      <button class="btn" onclick="selectPackage('Basic','As per Basic Package')">
-        Select Package
-      </button>
+
+    <!-- BASIC -->
+    <div class="card package-card animate">
+      <h3>Basic Package</h3>
+      <button class="btn small" onclick="togglePackage(this)">View Details</button>
+
+      <div class="package-details">
+        <p><b>Wedding Photography</b></p>
+        <ul>
+          <li>LED Wall + TV</li>
+          <li>Drone</li>
+          <li>Candid Photography</li>
+          <li>Candid Videography (2 Songs + Teaser)</li>
+          <li>Traditional Photo & Video (HD – 2 Camera)</li>
+          <li>Album – 60 Sheets Karizma</li>
+          <li>One Pendrive</li>
+        </ul>
+        <p class="price">₹1,20,000</p>
+        <button class="btn" onclick="bookPackage('Basic Package','LED Wall + TV, Drone, Candid Photo & Video, Traditional Coverage, Album')">
+          Book this Package
+        </button>
+      </div>
     </div>
 
-    <div class="card">
-      <h3>Premium</h3>
-      <p>Best balance of coverage & creativity</p>
-      <p class="price">₹1,60,000</p>
-      <button class="btn" onclick="selectPackage('Premium','As per Premium Package')">
-        Select Package
-      </button>
+    <!-- PREMIUM -->
+    <div class="card package-card animate">
+      <h3>Premium Package</h3>
+      <button class="btn small" onclick="togglePackage(this)">View Details</button>
+
+      <div class="package-details">
+        <p><b>Wedding Photography</b></p>
+        <ul>
+          <li>Traditional Photo & Video (2 Days)</li>
+          <li>Candid Photo & Cinematic Video (2 Days)</li>
+          <li>LED Wall (Reception & Muhurtham)</li>
+          <li>Drone</li>
+          <li>Album – 60 Sheets</li>
+          <li>Pre-Wedding (1 Day)</li>
+        </ul>
+        <p class="price">₹1,60,000</p>
+        <button class="btn" onclick="bookPackage('Premium Package','2 Days Coverage, LED Wall, Drone, Album, Pre-Wedding')">
+          Book this Package
+        </button>
+      </div>
     </div>
 
-    <div class="card">
-      <h3>Luxury</h3>
-      <p>Complete premium wedding experience</p>
-      <p class="price">₹2,20,000</p>
-      <button class="btn" onclick="selectPackage('Luxury','As per Luxury Package')">
-        Select Package
-      </button>
+    <!-- LUXURY -->
+    <div class="card package-card animate">
+      <h3>Luxury Package</h3>
+      <button class="btn small" onclick="togglePackage(this)">View Details</button>
+
+      <div class="package-details">
+        <ul>
+          <li>Complete 2 Days Premium Coverage</li>
+          <li>Extra Audience & Dinner Coverage</li>
+          <li>Drone (2 Days)</li>
+          <li>Portraits</li>
+          <li>Album – 40 + 40 Sheets</li>
+          <li>House Shastra, Haldi & Mehendi</li>
+          <li>Ring Exchange & Highlight Video</li>
+          <li>Pre-Wedding Shoot</li>
+        </ul>
+        <p class="price">₹2,20,000</p>
+        <button class="btn" onclick="bookPackage('Luxury Package','Full Premium Wedding + Pre-Wedding Coverage')">
+          Book this Package
+        </button>
+        
+      </div>
     </div>
+
   </div>
+  <button class="btn" onclick="togglePackage(this.closest('.card'))">
+  View Details
+</button>
+
 </section>
 
-<!-- CUSTOMISE -->
+<!-- CUSTOMISE (UNCHANGED LOGIC) -->
 <section class="section" id="customise">
-  <h2>Customise Your Package</h2>
+  <h2 class="animate">Customise Your Package</h2>
 
   <form id="customForm">
     <div class="grid">
-      <label><input type="checkbox" value="Traditional Photography"> Traditional Photography</label>
-      <label><input type="checkbox" value="Traditional Videography"> Traditional Videography</label>
-      <label><input type="checkbox" value="Candid Photography"> Candid Photography</label>
-      <label><input type="checkbox" value="Candid Videography"> Candid Videography</label>
+      <label><input type="checkbox" value="Traditional Photo"> Traditional Photo</label>
+      <label><input type="checkbox" value="Traditional Video"> Traditional Video</label>
+      <label><input type="checkbox" value="Candid Photo"> Candid Photo</label>
+      <label><input type="checkbox" value="Candid Video"> Candid Video</label>
       <label><input type="checkbox" value="Drone"> Drone</label>
-      <label><input type="checkbox" value="LED Wall 6x8"> LED Wall 6×8</label>
-      <label><input type="checkbox" value="LED Wall 6x10"> LED Wall 6×10</label>
-      <label><input type="checkbox" value="TV"> TV</label>
-      <label><input type="checkbox" value="Album 20 Sheets"> Album 20 Sheets</label>
-      <label><input type="checkbox" value="Album 40 Sheets"> Album 40 Sheets</label>
-      <label><input type="checkbox" value="Album 60 Sheets"> Album 60 Sheets</label>
-      <label><input type="checkbox" value="House Shastra"> House Shastra</label>
-      <label><input type="checkbox" value="Haldi & Mehendi"> Haldi & Mehendi</label>
-      <label><input type="checkbox" value="Pre-Wedding Photography"> Pre-Wedding Photography</label>
-      <label><input type="checkbox" value="Pre-Wedding Cinematic Video"> Pre-Wedding Cinematic Video</label>
-      <label><input type="checkbox" value="Pre-Wedding Drone"> Pre-Wedding Drone</label>
+      <label><input type="checkbox" value="LED Wall"> LED Wall</label>
+      <label><input type="checkbox" value="Album"> Album</label>
+      <label><input type="checkbox" value="Pre-Wedding Shoot"> Pre-Wedding</label>
+      <!-- EXTRA OPTIONS -->
+<select id="eventType">
+  <option value="">Select Event Type</option>
+  <option>Wedding</option>
+  <option>Reception</option>
+  <option>Engagement</option>
+  <option>Birthday</option>
+  <option>Other Event</option>
+</select>
+
+<select id="budgetRange">
+  <option value="">Approx Budget Range</option>
+  <option>₹50,000 – ₹1,00,000</option>
+  <option>₹1,00,000 – ₹2,00,000</option>
+  <option>₹2,00,000+</option>
+</select>
+
+<textarea id="customNotes" placeholder="Any special requirements? (Optional)"></textarea>
+
     </div>
 
     <button type="button" class="btn" onclick="useCustom()">Use Selected Services</button>
@@ -136,63 +185,136 @@
   </form>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  © <span id="year"></span> Films N Frames | Wedding & Event Photography
+  © <span id="year"></span> Films N Frames
 </footer>
 
 <script>
 /* Loader */
 window.onload = () => {
-  setTimeout(() => {
-    loader.style.display = "none";
-  }, 1800);
+  setTimeout(() => loader.style.display = "none", 1500);
 };
 
-/* Package select */
-function selectPackage(pkg, services){
-  localStorage.setItem("pkg", pkg);
-  localStorage.setItem("services", services);
-  package.value = pkg;
-  servicesBox.value = services;
-  location.href = "#booking";
+/* Package dropdown */
+function togglePackage(btn){
+  // close all other open packages
+  document.querySelectorAll(".package-details.open").forEach(p=>{
+    if(p !== btn.nextElementSibling){
+      p.classList.remove("open");
+    }
+  });
+
+  // toggle clicked package
+  btn.nextElementSibling.classList.toggle("open");
 }
 
-/* Customise */
-function useCustom(){
-  let s = [];
-  document.querySelectorAll("#customForm input:checked")
-    .forEach(i => s.push(i.value));
-  localStorage.setItem("pkg","Custom");
-  localStorage.setItem("services", s.join(", "));
-  package.value = "Custom";
-  servicesBox.value = s.join(", ");
+/* Book package */
+function bookPackage(pkg, services){
+  document.getElementById("package").value = pkg;
+  document.getElementById("services").value = services;
   location.href="#booking";
 }
 
-/* Autofill */
-const package = document.getElementById("package");
-const servicesBox = document.getElementById("services");
-package.value = localStorage.getItem("pkg") || "";
-servicesBox.value = localStorage.getItem("services") || "";
+/* Custom */
+function useCustom(){
+  let services = [];
+  document.querySelectorAll("#customForm input:checked")
+    .forEach(i => services.push(i.value));
+
+  if(services.length === 0){
+    alert("Please select at least one service");
+    return;
+  }
+
+  let extra = [];
+  if(eventType.value) extra.push("Event: " + eventType.value);
+  if(budgetRange.value) extra.push("Budget: " + budgetRange.value);
+  if(customNotes.value) extra.push("Notes: " + customNotes.value);
+
+  document.getElementById("package").value = "Custom Package";
+  document.getElementById("services").value =
+    services.join(", ") + (extra.length ? " | " + extra.join(" | ") : "");
+
+  document.getElementById("customConfirmPopup").style.display="flex";
+}
+function confirmCustom(){
+  document.getElementById("customConfirmPopup").style.display = "none";
+  document.getElementById("booking").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+function editCustom(){
+  document.getElementById("customConfirmPopup").style.display = "none";
+  document.getElementById("customise").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+
+
 
 /* WhatsApp */
-bookingForm.onsubmit = e => {
+bookingForm.onsubmit=e=>{
   e.preventDefault();
-  const msg = `📸 New Booking – Films N Frames
+  const msg=`New Booking - Films N Frames
 Name: ${name.value}
 Phone: ${phone.value}
 Location: ${location.value}
 Date: ${date.value}
 Package: ${package.value}
-Services: ${servicesBox.value}
+Services: ${services.value}
 Payment: ${payment.value}`;
-  window.open("https://wa.me/917483768401?text=" + encodeURIComponent(msg));
+  window.open("https://wa.me/917483768401?text="+encodeURIComponent(msg));
 };
 
-/* Year */
-year.innerText = new Date().getFullYear();
+year.innerText=new Date().getFullYear();
+
+/* Scroll animations */
+const obs=new IntersectionObserver(e=>{
+  e.forEach(i=>i.isIntersecting && i.target.classList.add("show"))
+});
+document.querySelectorAll(".animate").forEach(el=>obs.observe(el));
+
+/* Show popup only once */
+
+
+function closePopup(){
+  document.getElementById("customPopup").style.display="none";
+}
+
+function openCustomise(){
+  closePopup();
+  document.getElementById("customise").scrollIntoView({behavior:"smooth"});
+}
+
 </script>
+
+
+<!-- NO PACKAGE SELECTED POPUP -->
+<div id="noPackagePopup" class="popup-overlay">
+  <div class="popup-box">
+    <h3>⚠ Please Select a Package</h3>
+    <p>
+      Choose one of our packages or build your own custom package to continue booking.
+    </p>
+    <button class="btn" onclick="goToPackages()">View Packages</button>
+    <span class="close" onclick="closeNoPackage()">×</span>
+  </div>
+</div>
+
+<!-- CUSTOM CONFIRMATION POPUP -->
+<div id="customConfirmPopup" class="popup-overlay">
+  <div class="popup-box">
+    <h3>✅ Custom Package Selected</h3>
+    <p>
+      You have created a custom package.<br>
+      Do you want to continue with booking?
+    </p>
+    <button class="btn" onclick="confirmCustom()">Continue Booking</button>
+    <button class="btn outline" onclick="editCustom()">Edit Package</button>
+  </div>
+</div>
+
 
 </body>
 </html>

@@ -194,6 +194,7 @@ a{text-decoration:none;color:inherit}
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:12px;
   text-align:left;
+  
 }
 
 .grid label{
@@ -247,12 +248,176 @@ footer{
 @keyframes fadeUp{
   from{opacity:0;transform:translateY(30px)}
   to{opacity:1;transform:translateY(0)}
+}body{
+  font-family:Poppins,sans-serif;
+  background:#fff;
+  color:#2b2b2b;
 }
 
-/* =====================
-   RESPONSIVE
-===================== */
-@media(max-width:768px){
-  .overlay h2{font-size:36px}
-  .header{flex-direction:column;gap:10px}
+.animate{opacity:0;transform:translateY(30px);transition:.8s}
+.animate.show{opacity:1;transform:none}
+
+/* PACKAGE FIX */
+.package-card h3{color:#dbaf34}
+/* Package dropdown animation */
+.package-details{
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+  transform:translateY(-10px);
+  transition:
+    max-height .6s ease,
+    opacity .4s ease,
+    transform .4s ease;
+  background:#fff;
+  color:#333;
+  padding:0 20px;
+  border-radius:12px;
+  text-align: left;
+}
+
+/* When opened */
+.package-details.open{
+  max-height:1200px;   /* enough for long content */
+  opacity:1;
+  transform:translateY(0);
+  padding:20px;
+  text-align: left;
+}
+
+
+.price{
+  font-weight:600;
+  color:#7b2cbf;
+  margin:10px 0;
+}
+
+.btn.small{
+  padding:8px 18px;
+  font-size:13px;
+}
+
+/* ===== CUSTOMISE POPUP ===== */
+#customPopup{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+.popup-box{
+  background:#fff;
+  padding:30px 35px;
+  border-radius:20px;
+  text-align:center;
+  max-width:320px;
+  animation:popupScale .5s ease;
+  position:relative;
+}
+
+.popup-box h3{
+  color:#7b2cbf;
+  margin-bottom:10px;
+}
+
+.popup-box p{
+  font-size:14px;
+  color:#555;
+}
+
+.popup-box .close{
+  position:absolute;
+  top:10px;
+  right:14px;
+  font-size:22px;
+  cursor:pointer;
+  color:#aaa;
+}
+
+@keyframes popupScale{
+  from{opacity:0;transform:scale(.8)}
+  to{opacity:1;transform:scale(1)}
+}
+
+/* ===== CUSTOMISE HIGHLIGHT ===== */
+#customise{
+  position:relative;
+  border:2px dashed #c77dff;
+  box-shadow:0 0 25px rgba(199,125,255,.25);
+  animation:pulseGlow 2.5s infinite;
+}
+
+@keyframes pulseGlow{
+  0%{box-shadow:0 0 15px rgba(199,125,255,.2)}
+  50%{box-shadow:0 0 35px rgba(199,125,255,.45)}
+  100%{box-shadow:0 0 15px rgba(199,125,255,.2)}
+}
+/* POPUP COMMON */
+.popup-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+.popup-box{
+  background:#fff;
+  padding:30px;
+  border-radius:18px;
+  text-align:center;
+  max-width:340px;
+  animation:popupScale .4s ease;
+  position:relative;
+}
+
+.popup-box h3{
+  color:#7b2cbf;
+  margin-bottom:10px;
+}
+
+.popup-box p{
+  font-size:14px;
+  color:#555;
+}
+
+.popup-box .close{
+  position:absolute;
+  top:10px;
+  right:14px;
+  font-size:22px;
+  cursor:pointer;
+}
+
+.btn.outline{
+  background:transparent;
+  border:2px solid #c77dff;
+  color:#7b2cbf;
+  margin-left:10px;
+}
+
+@keyframes popupScale{
+  from{opacity:0;transform:scale(.85)}
+  to{opacity:1;transform:scale(1)}
+}
+/* ===== PACKAGES GRID (DESKTOP DEFAULT) ===== */
+.cards{
+  max-width:1100px;
+  margin:50px auto 0;
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:30px;
+}
+/* ===== PACKAGES GRID (DESKTOP DEFAULT) ===== */
+.cards{
+  max-width:1100px;
+  margin:50px auto 0;
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:30px;
 }
